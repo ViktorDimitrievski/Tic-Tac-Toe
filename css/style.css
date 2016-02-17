@@ -1,0 +1,34 @@
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+    cursor: no-drop;
+}
+
+[data-pos] {
+    width: 100px;
+    height: 100px;
+    /*  background-color: aquamarine */
+    ;
+    border: 2px solid grey;
+}
+
+.x {
+    background: url(../img/x.png) no-repeat;
+}
+
+.o {
+    background: url(../img/0.png) no-repeat;
+}
+
+/*.gameOver {
+    background: rgba(255, 135, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}*/
