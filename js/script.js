@@ -66,7 +66,7 @@ $(document).ready(function () {
             fiveClicks += 1;
             if (fiveClicks >= 5) {
                 checkedValue = winWin(tictactoe, testForX);
-                console.log(checkedValue);
+                //console.log(checkedValue);
                 if (checkedValue === testForX) {
                     xWins++;
                     $("#xWins").text("X win: " + xWins);
@@ -74,7 +74,7 @@ $(document).ready(function () {
 
                 }
                 checkedValue = winWin(tictactoe, testForO);
-                console.log(checkedValue);
+                // console.log(checkedValue);
                 if (checkedValue === testForO) {
                     oWins++;
                     $("#oWins").text("O win: " + oWins);
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
 
         });
-    }
+    } // kraj na funckijata magicClick
     magicClick();
 
     $("#newgame").click(function () {
@@ -96,7 +96,7 @@ $(document).ready(function () {
         fiveClicks = 0;
         tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]];
 
-         removeClickEvent();
+        removeClickEvent();
 
         $(".x,.o")
             .addClass("clicked")
