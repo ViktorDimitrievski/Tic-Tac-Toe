@@ -20,12 +20,11 @@ function winWin(tictactoe, xORo) {
     }
 }
 
-
-
 $(document).ready(function () {
     var klik = 0, // promenliva broime dali e klikato za X ili za 0 ako e 0 togas treba da se stavi X i ako e 1 togas 0
         i = 0, // index promenliva za for ciklusots
         xORo = "", // ova e za da postavime vrednost X ili 0 i vredosta ja dodavame kako klasa i vredost vo nizata tictactoe
+        positionOfClick = 0,
         parsedPositionOfClick = 0,
         tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]], // niza koja ja polnime so X i 0
         xWins = 0,
@@ -40,7 +39,7 @@ $(document).ready(function () {
 
         $(".clicked").click(function () {
             console.log($(".clicked"));
-            var positionOfClick = $(this).data("pos"); // odreduvanje na klik pozicija
+            positionOfClick = $(this).data("pos"); // odreduvanje na klik pozicija
             console.log(positionOfClick);
 
             if (klik === 0) {
@@ -61,7 +60,8 @@ $(document).ready(function () {
             $(this)
                 .addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
                 .removeClass("clicked") // ja briseme klasata clicked
-                .unbind("click"); // mu go briseme eventot na divot koj e prethodno zadaden
+                .unbind("click");// mu go briseme eventot na divot koj e prethodno zadaden
+                
 
             fiveClicks += 1;
             if (fiveClicks >= 5) {

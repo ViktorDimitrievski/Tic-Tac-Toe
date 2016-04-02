@@ -1,3 +1,8 @@
+.btn{
+    border-radius: 0rem;
+}
+
+
 .blue {
     background-color: blue;
 }
@@ -13,6 +18,7 @@
     /*  background-color: aquamarine */
     ;
     border: 2px solid grey;
+    cursor:pointer;
 }
 
 .x {
