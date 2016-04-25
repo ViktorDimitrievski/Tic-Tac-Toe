@@ -8,12 +8,22 @@
     <title>X0</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="gameOver">
+        <!--
+        <div class="endscreen">
+            <h1>CONGRATULATIONS You WON!</h1>
+            <button type="button" class="btn btn-success">CONTINUE WINING</button>
+            
+            <h2>Bad luck...</h2>
+            <button type="button" class="btn">Let's play again!</button>
+            
+            
         </div>
+-->
         <div class="row">
             <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="11"></div>
             <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="12"></div>
@@ -43,15 +53,34 @@
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <button type="submit" class="btn btn-primary" id="newgame">NEW GAME!</button>
+                <button type="submit" class="btn btn-success" id="newgame">NEW GAME!</button>
             </div>
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4">
+                    <h4>FOLLOW ME</h4>
+                    <a href=""><i class="fa fa-facebook-official fa-2x"></i></a>
+                    <a href=""><i class="fa fa-twitter-square fa-2x"></i></a>
+                    <a href=""><i class="fa fa-github-square fa-2x"></i></a>
+                    <a href=""><i class="fa fa-google-plus-square fa-2x"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4">
+                    Made with <i class="fa fa-heart"></i> in Macedonia <img alt="Macedonia flag" width="16px" height="16px" src="img/Macedonia-Flag-icon.png">
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="js/jquery-2.2.0.min.js"></script>
     <!--<script src="js/bootstrap.min.js"></script>-->
     <!--<script src="js/script.js"></script>-->
-    <script src="js/script-bot.js"></script>
+    <script src="js/script-computer.js"></script>
+    <script src="js/script-for-styles.js"></script>
 </body>
 
 </html>
