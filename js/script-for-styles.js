@@ -1,28 +1,27 @@
 //Ova e funkcija koja stava efekt na kopceto koga ke se klikne
 $(function () {
-    var btnClick, d, x, y;
+    var btnClick, bWidth, bHeight, x, y, posX, posY,d;
     $(".btn").click(function (e) {
         e.preventDefault();
+
+        posX = $(this).offset().left;
+        posY = $(this).offset().top;
+        bWidth = $(this).outerWidth();
+        bHeight = $(this).outerHeight();
+        d = Math.max(bWidth,  bHeight);
         
+        $(".btn-over").remove();
+
         if ($(this).find(".btn-over").length === 0) {
             $(this).prepend("<span class='btn-over'></span>");
         }
 
-        btnClick = $(this).find(".btn-over");
-        btnClick.removeClass("animation");
+        x = e.pageX - posX - bWidth / 2;
+        y = e.pageY - posY - bHeight / 2;
 
-        if (!btnClick.height() && !btnClick.width()) {
-            d = Math.max($(this).outerWidth(), $(this).outerHeight());
-            btnClick.css({
-                height: d,
-                width: d
-            });
-        }
-
-        x = e.pageX - $(this).offset().left - btnClick.width() / 2;
-        y = e.pageY - $(this).offset().top - btnClick.height() / 2;
-
-        btnClick.css({
+        $(".btn-over").css({
+            width: d,
+            height: d,
             top: y + 'px',
             left: x + 'px'
         }).addClass("animation");

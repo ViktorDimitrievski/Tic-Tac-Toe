@@ -38,6 +38,8 @@ nav {
     width: auto;
     min-height: 3rem;
     padding: 0rem 1rem;
+    position: relative;
+    overflow: hidden;
     text-transform: uppercase;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     -webkit-transition: all 0.2s ease;
@@ -82,7 +84,7 @@ nav {
 }
 
 .btn-over {
-    display: block;
+    display: inline-block;
     position: absolute;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 100%;
@@ -93,11 +95,11 @@ nav {
 }
 
 .animation {
-    -webkit-animation: ripple 0.65s linear;
-    -moz-animation: ripple 0.65s linear;
-    -ms-animation: ripple 0.65s linear;
-    -o-animation: ripple 0.65s linear;
-    animation: ripple 0.65s linear;
+    -webkit-animation: ripple 0.7s linear;
+    -moz-animation: ripple 0.7s linear;
+    -ms-animation: ripple 0.7s linear;
+    -o-animation: ripple 0.7s linear;
+    animation: ripple 0.7s linear;
 }
 
 @-webkit-keyframes ripple {
@@ -129,7 +131,9 @@ nav {
 }
 
 .fileds {
-    margin-top: 3rem;
+    margin: 3rem 0.5rem 1rem 0.5rem;
+    width: 18.75rem;
+    height: 21.75rem;
 }
 
 .field {
