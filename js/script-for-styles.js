@@ -2,6 +2,8 @@
 $(function () {
     var btnClick, d, x, y;
     $(".btn").click(function (e) {
+        e.preventDefault();
+        
         if ($(this).find(".btn-over").length === 0) {
             $(this).prepend("<span class='btn-over'></span>");
         }

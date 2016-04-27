@@ -1,6 +1,6 @@
 'use strict';
-var tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]], // niza koja ja polnime so X i 0
-    botPosition = 0;
+var tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]; // niza koja ja polnime so X i 0
+
 
 function winWin(tictactoe, xORo) {
     if (tictactoe[1][1] === xORo && tictactoe[1][2] === xORo && tictactoe[1][3] === xORo) {
@@ -23,55 +23,67 @@ function winWin(tictactoe, xORo) {
 }
 
 function moveBot(xORo) {
+    var botPosition,
+        oChar = "o";
     if (tictactoe[1][1] === xORo && tictactoe[1][2] === xORo) {
-        tictactoe[1][3] = "o";
+        tictactoe[1][3] = oChar;
         botPosition = 13;
     } else if (tictactoe[1][2] === xORo && tictactoe[1][3] === xORo) {
-        tictactoe[1][1] = "o";
+        tictactoe[1][1] = oChar;
         botPosition = 11;
     } else if (tictactoe[2][1] === xORo && tictactoe[2][2] === xORo) {
-        tictactoe[2][3] = "o";
-        botPosition = 23;
+        if (tictactoe[2][3] === oChar) {
+            return true;
+        } else {
+            tictactoe[2][3] = oChar;
+            botPosition = 23;
+        }
+
     } else if (tictactoe[2][2] === xORo && tictactoe[2][3] === xORo) {
-        tictactoe[2][1] = "o";
+        tictactoe[2][1] = oChar;
         botPosition = 21;
     } else if (tictactoe[3][1] === xORo && tictactoe[3][2] === xORo) {
-        tictactoe[3][3] = "o";
+        tictactoe[3][3] = oChar;
         botPosition = 33;
     } else if (tictactoe[3][2] === xORo && tictactoe[3][3] === xORo) {
-        tictactoe[3][1] = "o";
+        tictactoe[3][1] = oChar;
         botPosition = 31;
     } else if (tictactoe[1][1] === xORo && tictactoe[2][1] === xORo) {
-        tictactoe[3][1] = "o";
+        tictactoe[3][1] = oChar;
         botPosition = 31;
     } else if (tictactoe[1][2] === xORo && tictactoe[2][2] === xORo) {
-        tictactoe[3][2] = "o";
+        tictactoe[3][2] = oChar;
         botPosition = 32;
     } else if (tictactoe[1][3] === xORo && tictactoe[2][3] === xORo) {
-        tictactoe[3][3] = "o";
+        tictactoe[3][3] = oChar;
         botPosition = 33;
     } else if (tictactoe[3][1] === xORo && tictactoe[2][1] === xORo) {
-        tictactoe[1][1] = "o";
+        tictactoe[1][1] = oChar;
         botPosition = 11;
     } else if (tictactoe[3][2] === xORo && tictactoe[2][2] === xORo) {
-        tictactoe[1][2] = "o";
+        tictactoe[1][2] = oChar;
         botPosition = 12;
     } else if (tictactoe[3][3] === xORo && tictactoe[2][3] === xORo) {
-        tictactoe[1][3] = "o";
-        botPosition = 13;
+        if (tictactoe[1][3] === oChar) {
+           return true;
+        } else {
+            tictactoe[1][3] = oChar;
+            botPosition = 13;
+        }
     } else if (tictactoe[1][1] === xORo && tictactoe[2][2] === xORo) {
-        tictactoe[3][3] = "o";
+        tictactoe[3][3] = oChar;
         botPosition = 33;
     } else if (tictactoe[3][3] === xORo && tictactoe[2][2] === xORo) {
-        tictactoe[1][1] = "o";
+        tictactoe[1][1] = oChar;
         botPosition = 11;
     } else if (tictactoe[1][3] === xORo && tictactoe[2][2] === xORo) {
-        tictactoe[3][1] = "o";
+        tictactoe[3][1] = oChar;
         botPosition = 31;
     } else if (tictactoe[3][1] === xORo && tictactoe[2][2] === xORo) {
-        tictactoe[1][3] = "o";
+        tictactoe[1][3] = oChar;
         botPosition = 13;
     }
+    return botPosition;
 }
 
 function botMove(tictactoe, xORo) {
@@ -128,7 +140,8 @@ $(document).ready(function () {
         testForX = "x",
         testForO = "o",
         botPosParsingFirst = 1,
-        botPosParsingSecond = 1;
+        botPosParsingSecond = 1,
+        botPosition = 0;
 
     function removeClickEvent() {
         $(".clicked")
@@ -150,9 +163,11 @@ $(document).ready(function () {
                     tictactoe[parsedPositionOfClick][positionOfClick % 10] = xORo;
                 }
             }
-            moveBot(testForX);
+            // Call for our boot to move right and we have position if is made some changes in array
+            botPosition = moveBot(testForX);
+            if (botPosition) {
 
-            if (fiveClicks === 0) {
+            } else {
                 for (i = 1; i < tictactoe.length; i += 1) {
                     for (j = 1; j < tictactoe.length; j += 1) {
                         if (tictactoe[i][j] === "") {
@@ -170,15 +185,19 @@ $(document).ready(function () {
             }
 
             $(this)
-                .addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
+                //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
                 .removeClass("clicked") // ja briseme klasata clicked
-                .unbind("click"); // mu go briseme eventot na divot koj e prethodno zadaden
+                .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
+                .children()
+                .addClass(xORo);
 
             xORo = "o";
             $("div[data-pos='" + botPosition + "']")
-                .addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
+                //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
                 .removeClass("clicked") // ja briseme klasata clicked
-                .unbind("click"); // mu go briseme eventot na divot koj e prethodno zadaden
+                .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
+                .children()
+                .addClass(xORo);
 
 
 
@@ -218,9 +237,10 @@ $(document).ready(function () {
 
         removeClickEvent();
 
-        $(".x,.o")
-            .addClass("clicked")
-            .removeClass("x o");
+        $(".x,.o").removeClass("x o");
+
+        $("*[data-pos]").addClass("clicked");
+
         magicClick();
     });
 

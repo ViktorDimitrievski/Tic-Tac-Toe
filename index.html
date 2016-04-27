@@ -12,7 +12,19 @@
 </head>
 
 <body>
-    <div class="container">
+    <header>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <button type="button" class="btn btn-login">LOG IN</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-sigup">SING UP</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container" id="main">
         <!--
         <div class="endscreen">
             <h1>CONGRATULATIONS You WON!</h1>
@@ -24,40 +36,42 @@
             
         </div>
 -->
-        <div class="row">
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="11"></div>
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="12"></div>
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="13"></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="21"></div>
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="22"></div>
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="23"></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="31"></div>
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="32"></div>
-            <div class="col-xs-4 col-md-4 col-lg-4 clicked" data-pos="33"></div>
-        </div>
-    </div>
+        <section class="fileds">
+            <div class="row">
+                <div class="col-xs-4 field clicked" data-pos="11"><span></span></div>
+                <div class="col-xs-4 field clicked" data-pos="12"><span></span></div>
+                <div class="col-xs-4 field clicked" data-pos="13"><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 field clicked" data-pos="21"><span></span></div>
+                <div class="col-xs-4 field clicked" data-pos="22"><span></span></div>
+                <div class="col-xs-4 field clicked" data-pos="23"><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 field clicked" data-pos="31"><span></span></div>
+                <div class="col-xs-4 field clicked" data-pos="32"><span></span></div>
+                <div class="col-xs-4 field clicked" data-pos="33"><span></span></div>
+            </div>
+        </section>
 
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="result">
-                    <p id="xWins"></p>
-                    <p id="oWins"></p>
+        <section>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="result">
+                        <p id="xWins"></p>
+                        <p id="oWins"></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <button type="submit" class="btn btn-success" id="newgame">NEW GAME!</button>
+            <div class="row">
+                <div class="col-lg-4">
+                    <button type="submit" class="btn btn-success" id="newgame">NEW GAME!</button>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
+
+    </div>
     <footer class="footer">
         <div class="container">
             <div class="row">

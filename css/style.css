@@ -3,7 +3,18 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: normal; }
 
-.btn, .btn-success {
+nav {
+  height: 3rem;
+  background-color: #424242;
+  color: #fff; }
+
+.menu {
+  list-style: none;
+  float: right; }
+  .menu li {
+    display: inline-block; }
+
+.btn, .btn-success, .btn-sigup, .btn-login {
   font-weight: 500;
   letter-spacing: 0.125rem;
   color: #fff;
@@ -19,16 +30,30 @@ body {
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease; }
-  .btn:hover, .btn-success:hover {
+  .btn:hover, .btn-success:hover, .btn-sigup:hover, .btn-login:hover {
     background-color: #42A5F5;
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
-  .btn:focus, .btn-success:focus {
+  .btn:focus, .btn-success:focus, .btn-sigup:focus, .btn-login:focus {
     outline: 0; }
 
 .btn-success {
   background-color: #4CAF50; }
   .btn-success:hover {
     background-color: #66BB6A; }
+
+.btn-sigup {
+  box-shadow: none;
+  background-color: #4CAF50; }
+  .btn-sigup:hover {
+    background-color: #66BB6A;
+    box-shadow: none; }
+
+.btn-login {
+  box-shadow: none;
+  background-color: transparent; }
+  .btn-login:hover {
+    box-shadow: none;
+    background-color: transparent; }
 
 .btn-over {
   display: block;
@@ -67,19 +92,46 @@ body {
     opacity: 0;
     transform: scale(2.5); } }
 
-[data-pos] {
-  width: 100px;
-  height: 100px;
+.fileds {
+  margin-top: 3rem; }
+
+.field {
+  width: 6.25rem;
+  height: 6.25rem;
   border: 2px solid #000;
   cursor: pointer; }
+  .field[data-pos="11"],
+  .field[data-pos="21"],
+  .field[data-pos="31"] {
+    border-left: none; }
+  .field[data-pos="13"],
+  .field[data-pos="23"],
+  .field[data-pos="33"] {
+    border-right: none; }
+  .field[data-pos="31"],
+  .field[data-pos="32"],
+  .field[data-pos="33"] {
+    border-bottom: none; }
+  .field[data-pos="11"],
+  .field[data-pos="12"],
+  .field[data-pos="13"] {
+    border-top: none; }
 
 .x {
   background: url("../img/xANDo.png") no-repeat;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem auto;
   background-position: 0rem -4rem; }
 
 .o {
   background: url("../img/xANDo.png") no-repeat;
-  background-position: 0rem 4rem; }
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem auto;
+  background-position: 0rem 0rem; }
 
 .endscreen {
   position: absolute;
@@ -97,7 +149,6 @@ body {
   color: #D32F2F; }
 
 footer {
-  bottom: 0px;
   width: 100%;
   position: absolute;
   padding: 1rem;
