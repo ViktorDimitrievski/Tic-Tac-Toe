@@ -1,7 +1,11 @@
 'use strict';
-var tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]; // niza koja ja polnime so X i 0
+var tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["pom", "pom", "pom", "pom"]]; // niza koja ja polnime so X i 0
 
-
+/* prototype */
+Array.prototype.randomElement = function () {
+    return this[Math.floor(Math.random() * this.length)];
+};
+/* prototype */
 function winWin(tictactoe, xORo) {
     if (tictactoe[1][1] === xORo && tictactoe[1][2] === xORo && tictactoe[1][3] === xORo) {
         return xORo;
@@ -65,7 +69,7 @@ function moveBot(xORo) {
         botPosition = 12;
     } else if (tictactoe[3][3] === xORo && tictactoe[2][3] === xORo) {
         if (tictactoe[1][3] === oChar) {
-           return true;
+            return true;
         } else {
             tictactoe[1][3] = oChar;
             botPosition = 13;
@@ -86,43 +90,73 @@ function moveBot(xORo) {
     return botPosition;
 }
 
-function botMove(tictactoe, xORo) {
-    var i = 0,
-        j = 0,
-        pomI = 0;
+function botMove(xORo) {
+    var i,
+        j,
+        trueORfalse,
+        changeInArray = 0,
+        oneTimeCheck = 1;
 
     for (i = 1; i < tictactoe.length - 1; i += 1) {
-        pomI = i;
         for (j = 1; j < tictactoe.length - 1; j += 1) {
-            if (tictactoe[i][j] === xORo && tictactoe[i][j + 1] === xORo) {
-                if (tictactoe[i][j - 2] === "") {
-                    tictactoe[i][j] = "o";
-                }
-                if (tictactoe[i][j + 2] === "") {
-                    tictactoe[i][j] = "o";
+
+
+            if (tictactoe[i][1] === '' && tictactoe[i][2] === '' && tictactoe[i][3] === '') {
+                j = tictactoe.length;
+            } else {
+                if (tictactoe[i][j] === tictactoe[i][j + 1] && tictactoe[i][j] !== '') {
+
+                    trueORfalse = (tictactoe[i][j + 2] === '') ? tictactoe[i][j + 2] = 'o' : (tictactoe[i][j - 1] === '') ? tictactoe[i][j - 1] = 'o' : false;
+                    if (trueORfalse) {
+                        j = tictactoe.length;
+                        i = tictactoe.length;
+                        changeInArray += 1;
+                    }
+
+                } else if (tictactoe[i][j] === tictactoe[i][j + 2] && tictactoe[i][j + 1] === '') {
+                    tictactoe[i][j + 1] = 'o';
+                    changeInArray += 1;
+                    j = tictactoe.length;
+                    i = tictactoe.length;
+
                 }
             }
-
-            if (tictactoe[i][j] === xORo && tictactoe[i + 1][j] === xORo) {
-                if (tictactoe[i - 2] === "") {
-                    tictactoe[i][j] = "o";
-                }
-                if (tictactoe[i + 2] === "") {
-                    tictactoe[i][j] = "o";
-                }
-
-            }
-            if (tictactoe[i][j] === xORo && tictactoe[i + 1][j + 1] === xORo) {
-                tictactoe[i + 2][j + 2] = "o";
-            }
-
-            i += 1;
         }
-        i = pomI;
-
     }
+    if (changeInArray === 1) {
+        return changeInArray;
+    } else {
+        for (j = 1; j < tictactoe.length - 1; j += 1) {
+            for (i = 1; i < tictactoe.length - 1; i += 1) {
 
+                if (tictactoe[1][j] === '' && tictactoe[2][j] === '' && tictactoe[3][j] === '') {
+                    i = tictactoe.length;
+                } else {
+                    if (tictactoe[i][j] === tictactoe[i + 1][j] && tictactoe[i][j] !== '') {
+
+                        trueORfalse = (tictactoe[i + 2][j] === '') ? tictactoe[i + 2][j] = 'o' : (tictactoe[i][j] === '') ? tictactoe[i][j] = 'o' : false;
+                        if (trueORfalse) {
+                            changeInArray += 1;
+                            i = tictactoe.length;
+                            j = tictactoe.length;
+                        }
+                    }
+                    trueORfalse = i < 2 ? true : false;
+                    if (trueORfalse) {
+                        if (tictactoe[i][j] === tictactoe[i + 2][j] && tictactoe[i + 1][j] === '') {
+                            tictactoe[i + 1][j] = 'o';
+                            changeInArray += 1;
+                            i = tictactoe.length;
+                            j = tictactoe.length;
+                        }
+                    }
+                }
+            }
+        }
+        return changeInArray;
+    }
 }
+
 
 
 
@@ -139,9 +173,11 @@ $(document).ready(function () {
         fiveClicks = 0,
         testForX = "x",
         testForO = "o",
-        botPosParsingFirst = 1,
-        botPosParsingSecond = 1,
-        botPosition = 0;
+        randomFirst = 0,
+        randomSecond = 0,
+        botPosition = 0,
+        oPosArray = [],
+        tttPositions = [11, 12, 13, 21, 22, 23, 31, 32, 33];
 
     function removeClickEvent() {
         $(".clicked")
@@ -164,24 +200,38 @@ $(document).ready(function () {
                 }
             }
             // Call for our boot to move right and we have position if is made some changes in array
-            botPosition = moveBot(testForX);
-            if (botPosition) {
+            /*botPosition = 0;
+            botPosition = moveBot(testForX);*/
 
+            botPosition = botMove(xORo);
+            if (botPosition) {
+                i += 1;
             } else {
-                for (i = 1; i < tictactoe.length; i += 1) {
-                    for (j = 1; j < tictactoe.length; j += 1) {
-                        if (tictactoe[i][j] === "") {
-                            tictactoe[i][j] = "o";
-                            botPosParsingFirst = i;
-                            botPosParsingSecond = j;
-                            botPosition = botPosParsingFirst.toString();
-                            botPosition += botPosParsingSecond.toString();
-                            j = tictactoe.length;
-                            i = tictactoe.length;
-                        }
+                for (i = 0; i < 50; i += 1) {
+                    botPosition = tttPositions.randomElement();
+                    randomFirst = parseInt(botPosition / 10, 0);
+                    randomSecond = parseInt(botPosition % 10, 0);
+                    if (tictactoe[randomFirst][randomSecond] === "") {
+                        tictactoe[randomFirst][randomSecond] = "o";
+                        i = 60;
                     }
                 }
+
                 fiveClicks += 1;
+            }
+            botPosition = 0;
+            for (i = 1; i < tictactoe.length - 1; i += 1) {
+                for (j = 1; j < tictactoe.length - 1; j += 1) {
+
+                    if (tictactoe[i][1] === '' && tictactoe[i][2] === '' && tictactoe[i][3] === '') {
+                        j = tictactoe.length;
+
+                    } else if (tictactoe[i][j] === 'o') {
+                        botPosition += 1;
+                        oPosArray.push(i * 10 + j);
+
+                    }
+                }
             }
 
             $(this)
@@ -192,30 +242,35 @@ $(document).ready(function () {
                 .addClass(xORo);
 
             xORo = "o";
-            $("div[data-pos='" + botPosition + "']")
-                //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
-                .removeClass("clicked") // ja briseme klasata clicked
-                .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
-                .children()
-                .addClass(xORo);
 
+            for (i = 0; i < oPosArray.length; i += 1) {
 
+                /* botPosition = oPosArray[i];
+                 console.log(botPosition);*/
+                $("div[data-pos='" + oPosArray[i] + "']")
+                    //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
+                    .removeClass("clicked") // ja briseme klasata clicked
+                    .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
+                    .children()
+                    .addClass(xORo);
+
+            }
 
             fiveClicks += 1;
             if (fiveClicks >= 2) {
                 checkedValue = winWin(tictactoe, testForX);
                 //console.log(checkedValue);
                 if (checkedValue === testForX) {
-                    xWins++;
-                    $("#xWins").text("X win: " + xWins);
+                    xWins += 1;
+                    $("#xWins").text(xWins);
                     removeClickEvent();
 
                 }
                 checkedValue = winWin(tictactoe, testForO);
                 // console.log(checkedValue);
                 if (checkedValue === testForO) {
-                    oWins++;
-                    $("#oWins").text("O win: " + oWins);
+                    oWins += 1;
+                    $("#oWins").text(oWins);
                     removeClickEvent();
                 }
             }
@@ -232,8 +287,13 @@ $(document).ready(function () {
         xORo = "";
         parsedPositionOfClick = 0;
         fiveClicks = 0;
-        tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]];
+        tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["pom", "pom", "pom", "pom"]];
         botPosition = 0;
+        randomFirst = 0;
+        randomSecond = 0;
+        botPosition = 0;
+        oPosArray = [];
+        
 
         removeClickEvent();
 
