@@ -25,18 +25,51 @@
         </nav>
     </header>
     <div class="container" id="main">
-        <!--
-        <div class="endscreen">
-            <h1>CONGRATULATIONS You WON!</h1>
-            <button type="button" class="btn btn-success">CONTINUE WINING</button>
-            
-            <h2>Bad luck...</h2>
-            <button type="button" class="btn">Let's play again!</button>
-            
-            
-        </div>
--->
-        <section class="fileds">
+
+        <!--        <section id="endScreen">
+            <div class="col-xs-12 insadeScreen">
+                <h1>CONGRATULATIONS You WON!</h1>
+                <button type="button" class="btn btn-success">CONTINUE WINING</button>
+
+                <h2>Bad luck...</h2>
+                <button type="button" class="btn">Let's play again!</button>
+            </div>
+        </section>-->
+        <!--        <section id="chooseGamePlay">
+            <div class="col-xs-12 insadeScreen">
+                <h1>WELLCOME TO TICTACTOE</h1>
+                <p>Choose your game play</p>
+                <button type="button" class="btn btn-success">SINGLE PLAYER</button>
+                <button type="button" class="btn">MULTIPLAYER</button>
+            </div>
+        </section>-->
+
+        <!--        <section id="multiplayerSettings">
+            <div class="col-xs-12 insadeScreen">
+                <h1>WELLCOME TO TICTACTOE</h1>
+                <p>Enter name for players</p>
+                <input type="text" placeholder="Enter First Player Name..." name="firstplayer" id="firstPlayer" maxlength="15">
+                <input type="text" placeholder="Enter Second Player Name..." name="secondplayer" id="secondPlayer" maxlength="15" style="display:none">
+                <br><br>
+                <button type="button" class="btn">NEXT</button>
+                
+            </div>
+        </section>-->
+
+        <!--        <section id="singleplayerSettings">
+            <div class="col-xs-12 insadeScreen">
+                <h1>WELLCOME TO TICTACTOE</h1>
+                <p>Single player</p>
+                <input type="text" placeholder="Enter Name..." name="singlePlayer" id="singlePlayer" maxlength="15">
+                <br>
+                <br>
+                <button type="button" class="btn">PLAY IT!</button>
+
+            </div>
+        </section>-->
+
+        <div class="row fileds">
+           <div class="col-xs-12 col-md-6">
             <div class="row">
                 <div class="col-xs-4 field clicked" data-pos="11"><span></span></div>
                 <div class="col-xs-4 field clicked" data-pos="12"><span></span></div>
@@ -52,24 +85,27 @@
                 <div class="col-xs-4 field clicked" data-pos="32"><span></span></div>
                 <div class="col-xs-4 field clicked" data-pos="33"><span></span></div>
             </div>
-        </section>
-
-        <section>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="result">
-                        <p id="xWins"></p>
-                        <p id="oWins"></p>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-4">
                     <button type="submit" class="btn btn-success" id="newgame">NEW GAME!</button>
                 </div>
             </div>
-        </section>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div class="col-xs-12">RESULTS</div>
+                <div class="col-xs-4">PLAYER</div>
+                <div class="col-xs-4">WINS</div>
+                <div class="col-xs-4">LOSS</div>
+                <div class="col-xs-4">Viktor</div>
+                <div class="col-xs-4" id="xWins">0</div>
+                <div class="col-xs-4">3</div>
+                <div class="col-xs-4">Zoran</div>
+                <div class="col-xs-4" id="oWins">0</div>
+                <div class="col-xs-4">3</div>
+            </div>
+        </div>
 
     </div>
     <footer class="footer">

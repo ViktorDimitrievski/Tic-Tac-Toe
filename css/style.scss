@@ -9,6 +9,7 @@
 }
 
 $color-red: #D32F2F;
+//mixin variables list 
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
@@ -26,6 +27,38 @@ nav {
     li {
         display: inline-block;
     }
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=tel],
+textarea.style-textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #556270;
+    border-radius: 0;
+    outline: none;
+    letter-spacing: .15rem;
+    height: 48px;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 15px 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all .3s;
+}
+
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+textarea.style-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #26A69A;
+    box-shadow: 0 1px 0 0 #4DB6AC;
 }
 
 .btn {
@@ -53,12 +86,19 @@ nav {
     &:focus {
         outline: 0; //this is for google chrome if is not like this it will show outline after you click and is blue
     }
+    &:active {
+        background-color: #42A5F5;
+        outline: 0;
+    }
 }
 
 .btn-success {
     @extend .btn;
     background-color: #4CAF50;
     &:hover {
+        background-color: #66BB6A;
+    }
+    &:active {
         background-color: #66BB6A;
     }
 }
@@ -70,6 +110,10 @@ nav {
     &:hover {
         background-color: #66BB6A;
         box-shadow: none;
+    }
+    &:active {
+        background-color: #66BB6A;
+        border-color: none;
     }
 }
 
@@ -94,40 +138,41 @@ nav {
     transform: scale(0);
 }
 
+@mixin AnimationKeyFrames($animation-name) {
+    @-webkit-keyframes $animation-name {
+        100% {
+            opacity: 0;
+            transform: scale(2.5);
+        }
+    }
+    @-moz-keyframes $animation-name {
+        100% {
+            opacity: 0;
+            transform: scale(2.5);
+        }
+    }
+    @-o-keyframes $animation-name {
+        100% {
+            opacity: 0;
+            transform: scale(2.5);
+        }
+    }
+    @keyframes $animation-name {
+        100% {
+            opacity: 0;
+            transform: scale(2.5);
+        }
+    }
+}
+
 .animation {
-    -webkit-animation: ripple 0.7s linear;
-    -moz-animation: ripple 0.7s linear;
-    -ms-animation: ripple 0.7s linear;
-    -o-animation: ripple 0.7s linear;
-    animation: ripple 0.7s linear;
-}
-
-@-webkit-keyframes ripple {
-    100% {
-        opacity: 0;
-        -webkit-transform: scale(2.5);
-    }
-}
-
-@-moz-keyframes ripple {
-    100% {
-        opacity: 0;
-        -moz-transform: scale(2.5);
-    }
-}
-
-@-o-keyframes ripple {
-    100% {
-        opacity: 0;
-        -o-transform: scale(2.5);
-    }
-}
-
-@keyframes ripple {
-    100% {
-        opacity: 0;
-        transform: scale(2.5);
-    }
+    $animationName: ripple;
+    @include AnimationKeyFrames($animationName);
+    -webkit-animation: $animationName 0.7s linear;
+    -moz-animation: $animationName 0.7s linear;
+    -ms-animation: $animationName 0.7s linear;
+    -o-animation: $animationName 0.7s linear;
+    animation: $animationName 0.7s linear;
 }
 
 .fileds {
@@ -175,17 +220,41 @@ nav {
     background-position: 0rem 0rem;
 }
 
-.endscreen {
+.overAll {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: lighten(#000, 30%);
     z-index: 1;
     top: 0px;
     left: 0px;
-    text-align: center;
+    display: flex;
     align-items: center;
-    display: inline-flex;
+   
+}
+
+#endScreen {
+    @extend .overAll;
+}
+
+#chooseGamePlay {
+    @extend .overAll;
+    background-color: lighten(yellowgreen, 60%);
+    color: #000;
+}
+
+#multiplayerSettings {
+   @extend .overAll;
+    color: antiquewhite;
+}
+
+#singleplayerSettings {
+    @extend .overAll;
+}
+
+.insadeScreen {
+    text-align: center;
+    margin: 0px auto;
 }
 
 .fa-heart {

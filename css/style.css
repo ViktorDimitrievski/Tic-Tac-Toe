@@ -14,6 +14,36 @@ nav {
   .menu li {
     display: inline-block; }
 
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=tel],
+textarea.style-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #556270;
+  border-radius: 0;
+  outline: none;
+  letter-spacing: .15rem;
+  height: 48px;
+  width: 100%;
+  font-size: 16px;
+  margin: 0 0 15px 0;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: all 0.3s; }
+
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+textarea.style-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #26A69A;
+  box-shadow: 0 1px 0 0 #4DB6AC; }
+
 .btn, .btn-success, .btn-sigup, .btn-login {
   font-weight: 500;
   letter-spacing: 0.125rem;
@@ -37,10 +67,15 @@ nav {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
   .btn:focus, .btn-success:focus, .btn-sigup:focus, .btn-login:focus {
     outline: 0; }
+  .btn:active, .btn-success:active, .btn-sigup:active, .btn-login:active {
+    background-color: #42A5F5;
+    outline: 0; }
 
 .btn-success {
   background-color: #4CAF50; }
   .btn-success:hover {
+    background-color: #66BB6A; }
+  .btn-success:active {
     background-color: #66BB6A; }
 
 .btn-sigup {
@@ -49,6 +84,9 @@ nav {
   .btn-sigup:hover {
     background-color: #66BB6A;
     box-shadow: none; }
+  .btn-sigup:active {
+    background-color: #66BB6A;
+    border-color: none; }
 
 .btn-login {
   box-shadow: none;
@@ -77,17 +115,17 @@ nav {
 @-webkit-keyframes ripple {
   100% {
     opacity: 0;
-    -webkit-transform: scale(2.5); } }
+    transform: scale(2.5); } }
 
 @-moz-keyframes ripple {
   100% {
     opacity: 0;
-    -moz-transform: scale(2.5); } }
+    transform: scale(2.5); } }
 
 @-o-keyframes ripple {
   100% {
     opacity: 0;
-    -o-transform: scale(2.5); } }
+    transform: scale(2.5); } }
 
 @keyframes ripple {
   100% {
@@ -137,17 +175,27 @@ nav {
   margin: 1rem auto;
   background-position: 0rem 0rem; }
 
-.endscreen {
+.overAll, #endScreen, #chooseGamePlay, #multiplayerSettings, #singleplayerSettings {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: #4d4d4d;
   z-index: 1;
   top: 0px;
   left: 0px;
+  display: flex;
+  align-items: center; }
+
+#chooseGamePlay {
+  background-color: white;
+  color: #000; }
+
+#multiplayerSettings {
+  color: antiquewhite; }
+
+.insadeScreen {
   text-align: center;
-  align-items: center;
-  display: inline-flex; }
+  margin: 0px auto; }
 
 .fa-heart {
   color: #D32F2F; }
