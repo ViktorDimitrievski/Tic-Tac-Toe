@@ -12,21 +12,8 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul class="menu">
-                <li>
-                    <button class="btn btn-login">LOG IN</button>
-                </li>
-                <li>
-                    <button class="btn btn-sigup">SING UP</button>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container" id="main">
 
-        <!--        <section id="endScreen">
+    <!--        <section id="endScreen">
             <div class="col-xs-12 insadeScreen">
                 <h1>CONGRATULATIONS You WON!</h1>
                 <button type="button" class="btn btn-success">CONTINUE WINING</button>
@@ -35,16 +22,38 @@
                 <button type="button" class="btn">Let's play again!</button>
             </div>
         </section>-->
-        <!--        <section id="chooseGamePlay">
-            <div class="col-xs-12 insadeScreen">
+    <section class="overAll">
+        <div class="col-xs-12 col-md-5 insadeScreen">
+            <!--           First welcome screen and chosing game play-->
+            <div id="welcomeScreen">
                 <h1>WELLCOME TO TICTACTOE</h1>
                 <p>Choose your game play</p>
-                <button type="button" class="btn btn-success">SINGLE PLAYER</button>
-                <button type="button" class="btn">MULTIPLAYER</button>
+                <button type="button" class="btn btn-success" id="gamePlaySingle">SINGLE PLAYER</button>
+                <button type="button" class="btn" id="gamePlayMulti">MULTIPLAYER</button>
             </div>
-        </section>-->
+            <!--            Here is screen for one user to enter name-->
+            <div id="singlePlayerSettings" style="display:none">
+                <h1>WELLCOME TO TICTACTOE</h1>
+                <p>Single player</p>
+                <input type="text" placeholder="Enter Name..." name="singlePlayer" id="singlePlayer" maxlength="15">
+                <br>
+                <br>
+                <button type="button" class="btn" id="playSingle">PLAY IT!</button>
+            </div>
+            <!--            Here two players write there names-->
+            <div id="multiPlayerSettings" style="display:none">
+                <h1>WELLCOME TO TICTACTOE</h1>
+                <p>Enter name for players</p>
+                <input type="text" placeholder="Enter First Player Name..." name="firstplayer" id="firstPlayer" maxlength="15">
+                <input type="text" placeholder="Enter Second Player Name..." name="secondplayer" id="secondPlayer" maxlength="15">
+                <br>
+                <br>
+                <button type="button" class="btn" id="playMulti">PLAY IT!</button>
+            </div>
+        </div>
+    </section>
 
-        <!--        <section id="multiplayerSettings">
+    <!--        <section id="multiplayerSettings">
             <div class="col-xs-12 insadeScreen">
                 <h1>WELLCOME TO TICTACTOE</h1>
                 <p>Enter name for players</p>
@@ -55,41 +64,57 @@
                 
             </div>
         </section>-->
+    <!--
+    <section id="singleplayerSettings" style="display:none">
+        <div class="col-xs-12 insadeScreen">
+            <h1>WELLCOME TO TICTACTOE</h1>
+            <p>Single player</p>
+            <input type="text" placeholder="Enter Name..." name="singlePlayer" id="singlePlayer" maxlength="15">
+            <br>
+            <br>
+            <button type="button" class="btn" id="playSingle">PLAY IT!</button>
 
-        <!--        <section id="singleplayerSettings">
-            <div class="col-xs-12 insadeScreen">
-                <h1>WELLCOME TO TICTACTOE</h1>
-                <p>Single player</p>
-                <input type="text" placeholder="Enter Name..." name="singlePlayer" id="singlePlayer" maxlength="15">
-                <br>
-                <br>
-                <button type="button" class="btn">PLAY IT!</button>
+        </div>
+    </section>-->
 
-            </div>
-        </section>-->
+    <header>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <button class="btn btn-login">SINGLE PLAYER</button>
+                </li>
+                <li>
+                    <button class="btn btn-sigup">MULTI PLAYER</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container" id="main">
+
+
 
         <div class="row fileds">
-           <div class="col-xs-12 col-md-6">
-            <div class="row">
-                <div class="col-xs-4 field clicked" data-pos="11"><span></span></div>
-                <div class="col-xs-4 field clicked" data-pos="12"><span></span></div>
-                <div class="col-xs-4 field clicked" data-pos="13"><span></span></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 field clicked" data-pos="21"><span></span></div>
-                <div class="col-xs-4 field clicked" data-pos="22"><span></span></div>
-                <div class="col-xs-4 field clicked" data-pos="23"><span></span></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 field clicked" data-pos="31"><span></span></div>
-                <div class="col-xs-4 field clicked" data-pos="32"><span></span></div>
-                <div class="col-xs-4 field clicked" data-pos="33"><span></span></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <button type="submit" class="btn btn-success" id="newgame">NEW GAME!</button>
+            <div class="col-xs-12 col-md-6">
+                <div class="row">
+                    <div class="col-xs-4 field clicked" data-pos="11"><span></span></div>
+                    <div class="col-xs-4 field clicked" data-pos="12"><span></span></div>
+                    <div class="col-xs-4 field clicked" data-pos="13"><span></span></div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-xs-4 field clicked" data-pos="21"><span></span></div>
+                    <div class="col-xs-4 field clicked" data-pos="22"><span></span></div>
+                    <div class="col-xs-4 field clicked" data-pos="23"><span></span></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 field clicked" data-pos="31"><span></span></div>
+                    <div class="col-xs-4 field clicked" data-pos="32"><span></span></div>
+                    <div class="col-xs-4 field clicked" data-pos="33"><span></span></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <button type="submit" class="btn btn-success" id="newgame">NEW GAME!</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -98,10 +123,10 @@
                 <div class="col-xs-4">PLAYER</div>
                 <div class="col-xs-4">WINS</div>
                 <div class="col-xs-4">LOSS</div>
-                <div class="col-xs-4">YOU</div>
+                <div class="col-xs-4"><span id="firstInputName"></span></div>
                 <div class="col-xs-4" id="xWins">0</div>
                 <div class="col-xs-4">0</div>
-                <div class="col-xs-4">Viktor</div>
+                <div class="col-xs-4"><span id="secondInputName"></span></div>
                 <div class="col-xs-4" id="oWins">0</div>
                 <div class="col-xs-4">0</div>
             </div>
@@ -126,11 +151,13 @@
             </div>
         </div>
     </footer>
+
     <script src="js/jquery-2.2.0.min.js"></script>
     <!--<script src="js/bootstrap.min.js"></script>-->
     <!--<script src="js/script.js"></script>-->
-    <script src="js/script-computer.js"></script>
-    <script src="js/script-for-styles.js"></script>
+    <!--    <script src="js/script-computer.js"></script>-->
+    <!--    <script src="js/script-for-styles.js"></script>-->
+    <script src="js/screens.js"></script>
 </body>
 
 </html>

@@ -34,13 +34,17 @@ $(document).ready(function () {
         testForX = "x",
         testForO = "o";
 
+    function removeClickEvent() {
+        $(".clicked")
+            .unbind("click");
+    }
 
     function magicClick() {
 
         $(".clicked").click(function () {
-            console.log($(".clicked"));
+            //console.log($(".clicked"));
             positionOfClick = $(this).data("pos"); // odreduvanje na klik pozicija
-            console.log(positionOfClick);
+            //console.log(positionOfClick);
 
             if (klik === 0) {
                 xORo = "x";
@@ -51,33 +55,34 @@ $(document).ready(function () {
             }
 
             parsedPositionOfClick = parseInt(positionOfClick / 10, 10); //zasto e ova napisano vaka na sledniot link -> http://goo.gl/dgIv5Y
-            for (i = 0; i < tictactoe.length; i++) {
+            for (i = 0; i < tictactoe.length; i += 1) {
                 if (i === parsedPositionOfClick) {
                     tictactoe[parsedPositionOfClick][positionOfClick % 10] = xORo;
                 }
             }
 
             $(this)
-                .addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
+                //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
                 .removeClass("clicked") // ja briseme klasata clicked
-                .unbind("click");// mu go briseme eventot na divot koj e prethodno zadaden
-                
+                .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
+                .children()
+                .addClass(xORo);
 
             fiveClicks += 1;
-            if (fiveClicks >= 5) {
+            if (fiveClicks >= 2) {
                 checkedValue = winWin(tictactoe, testForX);
                 //console.log(checkedValue);
                 if (checkedValue === testForX) {
-                    xWins++;
-                    $("#xWins").text("X win: " + xWins);
+                    xWins += 1;
+                    $("#xWins").text(xWins);
                     removeClickEvent();
 
                 }
                 checkedValue = winWin(tictactoe, testForO);
                 // console.log(checkedValue);
                 if (checkedValue === testForO) {
-                    oWins++;
-                    $("#oWins").text("O win: " + oWins);
+                    oWins += 1;
+                    $("#oWins").text(oWins);
                     removeClickEvent();
                 }
             }
@@ -98,14 +103,11 @@ $(document).ready(function () {
 
         removeClickEvent();
 
-        $(".x,.o")
-            .addClass("clicked")
-            .removeClass("x o");
+        $(".x,.o").removeClass("x o");
+
+        $("*[data-pos]").addClass("clicked");
         magicClick();
     });
 
-    function removeClickEvent() {
-        $(".clicked")
-            .unbind("click");
-    }
+
 });

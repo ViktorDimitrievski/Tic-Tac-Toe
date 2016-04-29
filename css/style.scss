@@ -177,7 +177,7 @@ textarea.style-textarea:focus:not([readonly]) {
 
 .fileds {
     margin: 3rem 0.5rem 1rem 0.5rem;
-//    width: 18.75rem;
+    //    width: 18.75rem;
     height: 21.75rem;
 }
 
@@ -225,37 +225,21 @@ textarea.style-textarea:focus:not([readonly]) {
     width: 100%;
     height: 100%;
     background-color: lighten(#000, 30%);
+    color: #fff;
     z-index: 1;
     top: 0px;
     left: 0px;
     display: flex;
     align-items: center;
-   
 }
 
-#endScreen {
-    @extend .overAll;
-}
-
-#chooseGamePlay {
-    @extend .overAll;
-    background-color: lighten(yellowgreen, 60%);
-    color: #000;
-}
-
-#multiplayerSettings {
-   @extend .overAll;
-    color: antiquewhite;
-}
-
-#singleplayerSettings {
-    @extend .overAll;
-}
 
 .insadeScreen {
+//    width: 50%;
     text-align: center;
     margin: 0px auto;
 }
+
 
 .fa-heart {
     color: $color-red;

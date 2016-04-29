@@ -134,7 +134,7 @@ function botMove(xORo) {
                 } else {
                     if (tictactoe[i][j] === tictactoe[i + 1][j] && tictactoe[i][j] !== '') {
 
-                        trueORfalse = (tictactoe[i + 2][j] === '') ? tictactoe[i + 2][j] = 'o' : (tictactoe[i][j] === '') ? tictactoe[i][j] = 'o' : false;
+                        trueORfalse = (tictactoe[i + 2][j] === '') ? tictactoe[i + 2][j] = 'o' : (tictactoe[i - 1][j] === '') ? tictactoe[i - 1][j] = 'o' : false;
                         if (trueORfalse) {
                             changeInArray += 1;
                             i = tictactoe.length;
@@ -152,6 +152,23 @@ function botMove(xORo) {
                     }
                 }
             }
+        }
+    }
+    if (changeInArray === 1) {
+        return changeInArray;
+    } else { //ovoj kod dole proveruva dali ima negde moznost za pobeda na x vo kosite strani
+        if (tictactoe[1][1] === tictactoe[2][2] && tictactoe[3][3] === '') {
+            tictactoe[3][3] = "o";
+            changeInArray += 1;
+        } else if (tictactoe[3][3] === tictactoe[2][2] && tictactoe[1][1] === '') {
+            tictactoe[1][1] = "o";
+            changeInArray += 1;
+        } else if (tictactoe[1][3] === tictactoe[2][2] && tictactoe[3][1] === '') {
+            tictactoe[3][1] = "o";
+            changeInArray += 1;
+        } else if (tictactoe[3][1] === tictactoe[2][2] && tictactoe[1][3] === '') {
+            tictactoe[1][3] = "o";
+            changeInArray += 1;
         }
         return changeInArray;
     }
@@ -184,6 +201,21 @@ $(document).ready(function () {
             .unbind("click");
     }
 
+    function makeOliveOnScreen(botPosition) {
+        var xORo = "o";
+        /* for (i = 0; i < oPosArray.length; i += 1) {
+            botPosition = oPosArray[i];
+            console.log(botPosition);*/
+        $("div[data-pos='" + botPosition + "']")
+            //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
+            .removeClass("clicked") // ja briseme klasata clicked
+            .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
+            .children() // go barame children elementot
+            .addClass(xORo); //na childrenot mu stavame klasa
+
+        //}
+    }
+
     function magicClick() {
 
         $(".clicked").click(function () {
@@ -205,34 +237,39 @@ $(document).ready(function () {
 
             botPosition = botMove(xORo);
             if (botPosition) {
-                i += 1;
+
+                for (i = 1; i < tictactoe.length - 1; i += 1) {
+                    for (j = 1; j < tictactoe.length - 1; j += 1) {
+
+                        if (tictactoe[i][1] === '' && tictactoe[i][2] === '' && tictactoe[i][3] === '') {
+                            j = tictactoe.length;
+
+                        } else if (tictactoe[i][j] === 'o') {
+
+                            //oPosArray.push(i * 10 + j);
+                            botPosition = i * 10 + j;
+                            makeOliveOnScreen(botPosition);
+                        }
+                    }
+                }
+
             } else {
-                for (i = 0; i < 50; i += 1) {
+                for (i = 0; i < 1000; i += 1) {
                     botPosition = tttPositions.randomElement();
                     randomFirst = parseInt(botPosition / 10, 0);
                     randomSecond = parseInt(botPosition % 10, 0);
                     if (tictactoe[randomFirst][randomSecond] === "") {
                         tictactoe[randomFirst][randomSecond] = "o";
-                        i = 60;
+                        i = 1600;
+                        //oPosArray.push(botPosition);
+                        makeOliveOnScreen(botPosition);
+                        botPosition = tttPositions.indexOf(botPosition);
+                        tttPositions.splice(botPosition, 1);
                     }
                 }
-
                 fiveClicks += 1;
             }
-            botPosition = 0;
-            for (i = 1; i < tictactoe.length - 1; i += 1) {
-                for (j = 1; j < tictactoe.length - 1; j += 1) {
 
-                    if (tictactoe[i][1] === '' && tictactoe[i][2] === '' && tictactoe[i][3] === '') {
-                        j = tictactoe.length;
-
-                    } else if (tictactoe[i][j] === 'o') {
-                        botPosition += 1;
-                        oPosArray.push(i * 10 + j);
-
-                    }
-                }
-            }
 
             $(this)
                 //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
@@ -241,20 +278,9 @@ $(document).ready(function () {
                 .children()
                 .addClass(xORo);
 
-            xORo = "o";
 
-            for (i = 0; i < oPosArray.length; i += 1) {
 
-                /* botPosition = oPosArray[i];
-                 console.log(botPosition);*/
-                $("div[data-pos='" + oPosArray[i] + "']")
-                    //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
-                    .removeClass("clicked") // ja briseme klasata clicked
-                    .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
-                    .children()
-                    .addClass(xORo);
 
-            }
 
             fiveClicks += 1;
             if (fiveClicks >= 2) {
@@ -292,8 +318,9 @@ $(document).ready(function () {
         randomFirst = 0;
         randomSecond = 0;
         botPosition = 0;
-        oPosArray = [];
-        
+        // oPosArray = [],
+        tttPositions = [11, 12, 13, 21, 22, 23, 31, 32, 33];
+
 
         removeClickEvent();
 
@@ -303,7 +330,7 @@ $(document).ready(function () {
 
         magicClick();
     });
-
+    
 });
 
 /*
