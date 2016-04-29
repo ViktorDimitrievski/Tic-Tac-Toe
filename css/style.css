@@ -174,23 +174,17 @@ textarea.style-textarea:focus:not([readonly]) {
   margin: 1rem auto;
   background-position: 0rem 0rem; }
 
-.overAll, #endScreen, #chooseGamePlay, #multiplayerSettings, #singleplayerSettings {
+.overAll {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: #4d4d4d;
+  color: #fff;
   z-index: 1;
   top: 0px;
   left: 0px;
   display: flex;
   align-items: center; }
-
-#chooseGamePlay {
-  background-color: white;
-  color: #000; }
-
-#multiplayerSettings {
-  color: antiquewhite; }
 
 .insadeScreen {
   text-align: center;
