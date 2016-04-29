@@ -182,8 +182,8 @@ textarea.style-textarea:focus:not([readonly]) {
 }
 
 .field {
-    width: 6.25rem;
-    height: 6.25rem;
+    width: 33.333333%;
+    height: 6.5rem;
     border: 2px solid #000;
     cursor: pointer;
     &[data-pos="11"],

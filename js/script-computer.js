@@ -1,5 +1,5 @@
 'use strict';
-var tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["pom", "pom", "pom", "pom"]]; // niza koja ja polnime so X i 0
+var tictactoe = [["", ""], ["qwe", "", "", ""], ["qwe", "", "", ""], ["qwe", "", "", ""]]; // niza koja ja polnime so X i 0
 
 /* prototype */
 Array.prototype.randomElement = function () {
@@ -90,21 +90,21 @@ function moveBot(xORo) {
     return botPosition;
 }
 
-function botMove(xORo) {
+function botMove(xORo, fiveClicks) {
     var i,
         j,
         trueORfalse,
         changeInArray = 0,
         oneTimeCheck = 1;
 
-    for (i = 1; i < tictactoe.length - 1; i += 1) {
+    for (i = 1; i < tictactoe.length; i += 1) {
         for (j = 1; j < tictactoe.length - 1; j += 1) {
 
 
             if (tictactoe[i][1] === '' && tictactoe[i][2] === '' && tictactoe[i][3] === '') {
                 j = tictactoe.length;
             } else {
-                if (tictactoe[i][j] === tictactoe[i][j + 1] && tictactoe[i][j] !== '') {
+                if (tictactoe[i][j] === tictactoe[i][j + 1]) { //&& (tictactoe[i][j] === '' || tictactoe[i][j + 1] === '')) {
 
                     trueORfalse = (tictactoe[i][j + 2] === '') ? tictactoe[i][j + 2] = 'o' : (tictactoe[i][j - 1] === '') ? tictactoe[i][j - 1] = 'o' : false;
                     if (trueORfalse) {
@@ -113,12 +113,15 @@ function botMove(xORo) {
                         changeInArray += 1;
                     }
 
-                } else if (tictactoe[i][j] === tictactoe[i][j + 2] && tictactoe[i][j + 1] === '') {
-                    tictactoe[i][j + 1] = 'o';
-                    changeInArray += 1;
-                    j = tictactoe.length;
-                    i = tictactoe.length;
-
+                }
+                trueORfalse = j < 2 ? true : false;
+                if (trueORfalse) {
+                    if (tictactoe[i][j] === tictactoe[i][j + 2] && tictactoe[i][j + 1] === '') {
+                        tictactoe[i][j + 1] = 'o';
+                        changeInArray += 1;
+                        j = tictactoe.length;
+                        i = tictactoe.length;
+                    }
                 }
             }
         }
@@ -126,7 +129,7 @@ function botMove(xORo) {
     if (changeInArray === 1) {
         return changeInArray;
     } else {
-        for (j = 1; j < tictactoe.length - 1; j += 1) {
+        for (j = 1; j < tictactoe.length; j += 1) {
             for (i = 1; i < tictactoe.length - 1; i += 1) {
 
                 if (tictactoe[1][j] === '' && tictactoe[2][j] === '' && tictactoe[3][j] === '') {
@@ -156,26 +159,40 @@ function botMove(xORo) {
     }
     if (changeInArray === 1) {
         return changeInArray;
-    } else { //ovoj kod dole proveruva dali ima negde moznost za pobeda na x vo kosite strani
-        if (tictactoe[1][1] === tictactoe[2][2] && tictactoe[3][3] === '') {
-            tictactoe[3][3] = "o";
-            changeInArray += 1;
-        } else if (tictactoe[3][3] === tictactoe[2][2] && tictactoe[1][1] === '') {
-            tictactoe[1][1] = "o";
-            changeInArray += 1;
-        } else if (tictactoe[1][3] === tictactoe[2][2] && tictactoe[3][1] === '') {
-            tictactoe[3][1] = "o";
-            changeInArray += 1;
-        } else if (tictactoe[3][1] === tictactoe[2][2] && tictactoe[1][3] === '') {
-            tictactoe[1][3] = "o";
-            changeInArray += 1;
+    } else if (fiveClicks > 1) { //ovoj kod dole proveruva dali ima negde moznost za pobeda na x vo kosite strani
+        if (tictactoe[1][1] === '' && tictactoe[2][2] === '' && tictactoe[3][3] === '') {
+            trueORfalse += 1;
+        } else {
+            if (tictactoe[1][1] === tictactoe[2][2] && tictactoe[3][3] === '') {
+                tictactoe[3][3] = "o";
+                changeInArray += 1;
+            } else if (tictactoe[3][3] === tictactoe[2][2] && tictactoe[1][1] === '') {
+                tictactoe[1][1] = "o";
+                changeInArray += 1;
+            } else if (tictactoe[1][1] === tictactoe[3][3] && tictactoe[2][2] === '') {
+                tictactoe[2][2] = "o";
+                changeInArray += 1;
+            }
+        }
+
+
+        if (tictactoe[1][3] === '' && tictactoe[2][2] === '' && tictactoe[3][3] === '') {
+            trueORfalse += 1;
+        } else {
+            if (tictactoe[1][3] === tictactoe[2][2] && tictactoe[3][1] === '') {
+                tictactoe[3][1] = "o";
+                changeInArray += 1;
+            } else if (tictactoe[3][1] === tictactoe[2][2] && tictactoe[1][3] === '') {
+                tictactoe[1][3] = "o";
+                changeInArray += 1;
+            } else if (tictactoe[3][1] === tictactoe[1][3] && tictactoe[2][2] === '') {
+                tictactoe[2][2] = "o";
+                changeInArray += 1;
+            }
         }
         return changeInArray;
     }
 }
-
-
-
 
 $(document).ready(function () {
     var klik = 0, // promenliva broime dali e klikato za X ili za 0 ako e 0 togas treba da se stavi X i ako e 1 togas 0
@@ -193,7 +210,6 @@ $(document).ready(function () {
         randomFirst = 0,
         randomSecond = 0,
         botPosition = 0,
-        oPosArray = [],
         tttPositions = [11, 12, 13, 21, 22, 23, 31, 32, 33];
 
     function removeClickEvent() {
@@ -203,25 +219,21 @@ $(document).ready(function () {
 
     function makeOliveOnScreen(botPosition) {
         var xORo = "o";
-        /* for (i = 0; i < oPosArray.length; i += 1) {
-            botPosition = oPosArray[i];
-            console.log(botPosition);*/
+        console.log($("div[data-pos='" + botPosition + "']"));
         $("div[data-pos='" + botPosition + "']")
             //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
             .removeClass("clicked") // ja briseme klasata clicked
             .unbind("click") // mu go briseme eventot na divot koj e prethodno zadaden
             .children() // go barame children elementot
             .addClass(xORo); //na childrenot mu stavame klasa
-
-        //}
     }
 
     function magicClick() {
 
         $(".clicked").click(function () {
-            //console.log($(".clicked"));
+            console.log($(".clicked"));
             positionOfClick = $(this).data("pos"); // odreduvanje na klik pozicija
-            //console.log(positionOfClick);
+            console.log("Klik od covek t.e x = " + positionOfClick);
 
             xORo = "x";
 
@@ -235,20 +247,30 @@ $(document).ready(function () {
             /*botPosition = 0;
             botPosition = moveBot(testForX);*/
 
-            botPosition = botMove(xORo);
+            if (fiveClicks === 0) {
+                botPosition = 0;
+            } else {
+                botPosition = botMove(xORo, fiveClicks);
+            }
+
             if (botPosition) {
 
-                for (i = 1; i < tictactoe.length - 1; i += 1) {
-                    for (j = 1; j < tictactoe.length - 1; j += 1) {
+                for (i = 1; i < tictactoe.length; i += 1) {
+                    for (j = 1; j < tictactoe.length; j += 1) {
 
                         if (tictactoe[i][1] === '' && tictactoe[i][2] === '' && tictactoe[i][3] === '') {
                             j = tictactoe.length;
 
                         } else if (tictactoe[i][j] === 'o') {
-
-                            //oPosArray.push(i * 10 + j);
                             botPosition = i * 10 + j;
+                            /*                            var pom;
+                                                        pom = $.inArray(botPosition, tttPositions);
+                                                        if (pom >= 0) {*/
+
                             makeOliveOnScreen(botPosition);
+                            botPosition = tttPositions.indexOf(botPosition);
+                            tttPositions.splice(botPosition, 1);
+                            // }
                         }
                     }
                 }
@@ -270,7 +292,7 @@ $(document).ready(function () {
                 fiveClicks += 1;
             }
 
-
+            console.log($(this));
             $(this)
                 //.addClass(xORo) //mu dodavame klasa vo zavisnost od vrednosta na xORo
                 .removeClass("clicked") // ja briseme klasata clicked
@@ -310,18 +332,19 @@ $(document).ready(function () {
     $("#newgame").click(function () {
         klik = 0;
         i = 0;
+        j = 0;
         xORo = "";
         parsedPositionOfClick = 0;
         fiveClicks = 0;
-        tictactoe = [["", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["pom", "pom", "pom", "pom"]];
+        tictactoe = [["", ""], ["qwe", "", "", ""], ["qwe", "", "", ""], ["qwe", "", "", ""]];
         botPosition = 0;
         randomFirst = 0;
         randomSecond = 0;
-        botPosition = 0;
+
         // oPosArray = [],
         tttPositions = [11, 12, 13, 21, 22, 23, 31, 32, 33];
 
-
+        console.log(klik, i, j, xORo, fiveClicks, tictactoe, botPosition, randomFirst, randomSecond, tttPositions);
         removeClickEvent();
 
         $(".x,.o").removeClass("x o");
@@ -330,7 +353,7 @@ $(document).ready(function () {
 
         magicClick();
     });
-    
+
 });
 
 /*
