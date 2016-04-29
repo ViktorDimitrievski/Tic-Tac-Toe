@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=VT323);
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: normal; }
@@ -22,7 +23,7 @@ input[type=tel],
 textarea.style-textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #556270;
+  border-bottom: 1px solid #9E9E9E;
   border-radius: 0;
   outline: none;
   letter-spacing: .15rem;
@@ -41,10 +42,10 @@ input[type=email]:focus:not([readonly]),
 input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 textarea.style-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #26A69A;
-  box-shadow: 0 1px 0 0 #4DB6AC; }
+  border-bottom: 1px solid #009688;
+  box-shadow: 0 1px 0 0 #19C3B3; }
 
-.btn, .btn-success, .btn-sigup, .btn-login {
+.btn, .btn-success, .btn-sigup, .btn-login, .btn-multi, .btn-single, .btn-play {
   font-weight: 500;
   letter-spacing: 0.125rem;
   color: #fff;
@@ -62,12 +63,12 @@ textarea.style-textarea:focus:not([readonly]) {
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease; }
-  .btn:hover, .btn-success:hover, .btn-sigup:hover, .btn-login:hover {
+  .btn:hover, .btn-success:hover, .btn-sigup:hover, .btn-login:hover, .btn-multi:hover, .btn-single:hover, .btn-play:hover {
     background-color: #42A5F5;
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
-  .btn:focus, .btn-success:focus, .btn-sigup:focus, .btn-login:focus {
+  .btn:focus, .btn-success:focus, .btn-sigup:focus, .btn-login:focus, .btn-multi:focus, .btn-single:focus, .btn-play:focus {
     outline: 0; }
-  .btn:active, .btn-success:active, .btn-sigup:active, .btn-login:active {
+  .btn:active, .btn-success:active, .btn-sigup:active, .btn-login:active, .btn-multi:active, .btn-single:active, .btn-play:active {
     background-color: #42A5F5;
     outline: 0; }
 
@@ -94,6 +95,27 @@ textarea.style-textarea:focus:not([readonly]) {
   .btn-login:hover {
     box-shadow: none;
     background-color: transparent; }
+
+.btn-multi {
+  background-color: #FF9800; }
+  .btn-multi:hover {
+    background-color: #FFA726; }
+
+.btn-single {
+  background-color: #EC407A; }
+  .btn-single:hover {
+    background-color: #F06292; }
+
+.btn-play {
+  background-color: #00BCD4; }
+  .btn-play:hover {
+    background-color: #26C6DA; }
+
+.btn-lg {
+  display: block;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  font-size: 1.5rem; }
 
 .btn-over {
   display: inline-block;
@@ -138,7 +160,7 @@ textarea.style-textarea:focus:not([readonly]) {
 
 .field {
   width: 33.333333%;
-  height: 6.5rem;
+  height: 7rem;
   border: 2px solid #000;
   cursor: pointer; }
   .field[data-pos="11"],

@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=VT323);
 @mixin xoImage {
     //for x and o image size and centring
     background: url('../img/xANDo.png') no-repeat;
@@ -37,7 +38,7 @@ input[type=tel],
 textarea.style-textarea {
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #556270;
+    border-bottom: 1px solid #9E9E9E;
     border-radius: 0;
     outline: none;
     letter-spacing: .15rem;
@@ -57,8 +58,8 @@ input[type=email]:focus:not([readonly]),
 input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 textarea.style-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #26A69A;
-    box-shadow: 0 1px 0 0 #4DB6AC;
+    border-bottom: 1px solid #009688;
+    box-shadow: 0 1px 0 0 #19C3B3;
 }
 
 .btn {
@@ -127,6 +128,34 @@ textarea.style-textarea:focus:not([readonly]) {
     }
 }
 
+.btn-multi {
+    @extend .btn;
+    background-color: #FF9800;
+    &:hover {
+        background-color: #FFA726;
+    }
+}
+.btn-single {
+    @extend .btn;
+    background-color: #EC407A;
+    &:hover {
+        background-color: #F06292;
+    }
+}
+.btn-play{
+    @extend .btn;
+    background-color: #00BCD4;
+    &:hover {
+        background-color: #26C6DA;
+    }
+}
+.btn-lg {
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    font-size: 1.5rem;
+}
+
 .btn-over {
     display: inline-block;
     position: absolute;
@@ -183,7 +212,7 @@ textarea.style-textarea:focus:not([readonly]) {
 
 .field {
     width: 33.333333%;
-    height: 6.5rem;
+    height: 7rem;
     border: 2px solid #000;
     cursor: pointer;
     &[data-pos="11"],
@@ -233,13 +262,11 @@ textarea.style-textarea:focus:not([readonly]) {
     align-items: center;
 }
 
-
 .insadeScreen {
-//    width: 50%;
+    //    width: 50%;
     text-align: center;
     margin: 0px auto;
 }
-
 
 .fa-heart {
     color: $color-red;

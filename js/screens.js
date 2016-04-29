@@ -61,7 +61,8 @@ $("#gamePlaySingle").click(function () {
     setTimeout(function () {
         $("#singlePlayerSettings").fadeIn();
     }, 500);
-    var path = "js/script-computer.js";
+    
+    var path = "js/script-single.js";
     loadScript(path);
 });
 
@@ -70,6 +71,7 @@ $("#gamePlayMulti").click(function () {
     setTimeout(function () {
         $("#multiPlayerSettings").fadeIn();
     }, 500);
-    var path = "js/script.js";
+    
+    var path = "js/script-multi.js";
     loadScript(path);
 });

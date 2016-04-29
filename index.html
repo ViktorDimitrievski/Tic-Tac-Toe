@@ -27,28 +27,26 @@
             <!--           First welcome screen and chosing game play-->
             <div id="welcomeScreen">
                 <h1>WELLCOME TO TICTACTOE</h1>
-                <p>Choose your game play</p>
-                <button type="button" class="btn btn-success" id="gamePlaySingle">SINGLE PLAYER</button>
-                <button type="button" class="btn" id="gamePlayMulti">MULTIPLAYER</button>
+               
+                <button type="button" class="btn btn-lg btn-single" id="gamePlaySingle">SINGLEPLAYER</button>
+                <button type="button" class="btn btn-lg btn-multi" id="gamePlayMulti">MULTIPLAYER</button>
             </div>
             <!--            Here is screen for one user to enter name-->
             <div id="singlePlayerSettings" style="display:none">
-                <h1>WELLCOME TO TICTACTOE</h1>
-                <p>Single player</p>
-                <input type="text" placeholder="Enter Name..." name="singlePlayer" id="singlePlayer" maxlength="15">
-                <br>
-                <br>
-                <button type="button" class="btn" id="playSingle">PLAY IT!</button>
+                <h1>Please enter you name</h1>
+               
+                <input type="text" placeholder="Your Name..." name="singlePlayer" id="singlePlayer" maxlength="15">
+                
+                <button type="button" class="btn btn-lg btn-play" id="playSingle">PLAY IT!</button>
             </div>
             <!--            Here two players write there names-->
             <div id="multiPlayerSettings" style="display:none">
-                <h1>WELLCOME TO TICTACTOE</h1>
-                <p>Enter name for players</p>
-                <input type="text" placeholder="Enter First Player Name..." name="firstplayer" id="firstPlayer" maxlength="15">
-                <input type="text" placeholder="Enter Second Player Name..." name="secondplayer" id="secondPlayer" maxlength="15">
-                <br>
-                <br>
-                <button type="button" class="btn" id="playMulti">PLAY IT!</button>
+                <h1>Enter details for players</h1>
+                
+                <input type="text" placeholder="First Player Name..." name="firstplayer" id="firstPlayer" maxlength="15">
+                <input type="text" placeholder="Second Player Name..." name="secondplayer" id="secondPlayer" maxlength="15">
+                
+                <button type="button" class="btn btn-lg btn-play" id="playMulti">PLAY IT!</button>
             </div>
         </div>
     </section>
@@ -137,8 +135,8 @@
 
     <script src="js/jquery-2.2.0.min.js"></script>
     <!--<script src="js/bootstrap.min.js"></script>-->
-    <!--<script src="js/script.js"></script>-->
-    <!--<script src="js/script-computer.js"></script>-->
+    <!--<script src="js/script-multi.js"></script>-->
+    <!--<script src="js/script-single.js"></script>-->
     <!--    <script src="js/script-for-styles.js"></script>-->
     <script src="js/screens.js"></script>
 </body>
