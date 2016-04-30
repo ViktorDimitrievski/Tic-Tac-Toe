@@ -62,6 +62,17 @@ textarea.style-textarea:focus:not([readonly]) {
     box-shadow: 0 1px 0 0 #19C3B3;
 }
 
+.errormsg {
+    color: #F44336;
+    line-height: 1.7rem;
+    text-align: left;
+    display: block;
+   
+    i {
+        margin-right: 5px;
+    }
+}
+
 .btn {
     font-weight: 500;
     letter-spacing: 0.125rem;
@@ -135,6 +146,7 @@ textarea.style-textarea:focus:not([readonly]) {
         background-color: #FFA726;
     }
 }
+
 .btn-single {
     @extend .btn;
     background-color: #EC407A;
@@ -142,13 +154,15 @@ textarea.style-textarea:focus:not([readonly]) {
         background-color: #F06292;
     }
 }
-.btn-play{
+
+.btn-play {
     @extend .btn;
     background-color: #00BCD4;
     &:hover {
         background-color: #26C6DA;
     }
 }
+
 .btn-lg {
     display: block;
     padding: 1.5rem;

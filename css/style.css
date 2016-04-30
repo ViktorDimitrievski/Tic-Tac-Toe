@@ -45,6 +45,14 @@ textarea.style-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #009688;
   box-shadow: 0 1px 0 0 #19C3B3; }
 
+.errormsg {
+  color: #F44336;
+  line-height: 1.7rem;
+  text-align: left;
+  display: block; }
+  .errormsg i {
+    margin-right: 5px; }
+
 .btn, .btn-success, .btn-sigup, .btn-login, .btn-multi, .btn-single, .btn-play {
   font-weight: 500;
   letter-spacing: 0.125rem;

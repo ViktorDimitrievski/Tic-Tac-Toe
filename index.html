@@ -27,25 +27,25 @@
             <!--           First welcome screen and chosing game play-->
             <div id="welcomeScreen">
                 <h1>WELLCOME TO TICTACTOE</h1>
-               
+
                 <button type="button" class="btn btn-lg btn-single" id="gamePlaySingle">SINGLEPLAYER</button>
                 <button type="button" class="btn btn-lg btn-multi" id="gamePlayMulti">MULTIPLAYER</button>
             </div>
             <!--            Here is screen for one user to enter name-->
             <div id="singlePlayerSettings" style="display:none">
                 <h1>Please enter you name</h1>
-               
+
                 <input type="text" placeholder="Your Name..." name="singlePlayer" id="singlePlayer" maxlength="15">
-                
+<!--                <span class="errormsg"><i class="fa fa-exclamation-triangle"></i>You can't leave this empty.</span>-->
                 <button type="button" class="btn btn-lg btn-play" id="playSingle">PLAY IT!</button>
             </div>
             <!--            Here two players write there names-->
             <div id="multiPlayerSettings" style="display:none">
                 <h1>Enter details for players</h1>
-                
+
                 <input type="text" placeholder="First Player Name..." name="firstplayer" id="firstPlayer" maxlength="15">
                 <input type="text" placeholder="Second Player Name..." name="secondplayer" id="secondPlayer" maxlength="15">
-                
+
                 <button type="button" class="btn btn-lg btn-play" id="playMulti">PLAY IT!</button>
             </div>
         </div>

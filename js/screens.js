@@ -39,20 +39,50 @@ $(function () {
     });
 });
 
+
+
+function checkInput(name, areaID) {
+    if (name.length <= 3) {
+        $("<span></span>")
+            .text("You can't leave this empty.")
+            .addClass("errormsg")
+            .insertAfter("#" + areaID);
+        return 0;
+    } else {
+        return 1;
+    }
+}
 $("#playSingle").click(function () {
-    var singlePlayerName = $("#singlePlayer").val();
-    $("#firstInputName").text(singlePlayerName);
-    $("#secondInputName").text("Viktor");
-    $(".overAll").fadeOut(1000);
+    var playerName, areaID, isValid;
+
+    playerName = $("#singlePlayer").val();
+    areaID = $("#singlePlayer").attr("id");
+    isValid = checkInput(playerName, areaID);
+
+    if (isValid) {
+        $(".errormsg").remove();
+        $("#firstInputName").text(playerName);
+        $("#secondInputName").text("Viktor");
+        $(".overAll").fadeOut(1000);
+    }
 });
 
 $("#playMulti").click(function () {
-    var first, second;
-    first = $("#firstPlayer").val();
-    second = $("#secondPlayer").val();
-    $("#firstInputName").text(first);
-    $("#secondInputName").text(second);
-    $(".overAll").fadeOut(1000);
+    var firstPlayer, secondPlayer, areaID, isValid = 0;
+    firstPlayer = $("#firstPlayer").val();
+    secondPlayer = $("#secondPlayer").val();
+
+    areaID = $("#firstPlayer").attr("id");
+    isValid += checkInput(firstPlayer, areaID);
+
+    areaID = $("#secondPlayer").attr("id");
+    isValid += checkInput(secondPlayer, areaID);
+    if (isValid === 2) {
+        $(".errormsg").remove();
+        $("#firstInputName").text(firstPlayer);
+        $("#secondInputName").text(secondPlayer);
+        $(".overAll").fadeOut(1000);
+    }
 });
 
 $("#gamePlaySingle").click(function () {
@@ -61,7 +91,7 @@ $("#gamePlaySingle").click(function () {
     setTimeout(function () {
         $("#singlePlayerSettings").fadeIn();
     }, 500);
-    
+
     var path = "js/script-single.js";
     loadScript(path);
 });
@@ -71,7 +101,7 @@ $("#gamePlayMulti").click(function () {
     setTimeout(function () {
         $("#multiPlayerSettings").fadeIn();
     }, 500);
-    
+
     var path = "js/script-multi.js";
     loadScript(path);
 });
