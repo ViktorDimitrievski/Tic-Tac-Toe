@@ -41,7 +41,7 @@ $(function () {
 
 
 
-function checkInput(name, areaID) {
+/*function checkInput(name, areaID) {
     if (name.length <= 3) {
         $("<span></span>")
             .text("You can't leave this empty.")
@@ -51,7 +51,7 @@ function checkInput(name, areaID) {
     } else {
         return 1;
     }
-}
+}*/
 $("#playSingle").click(function () {
     var playerName, areaID, isValid;
 
