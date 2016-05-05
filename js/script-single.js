@@ -135,9 +135,14 @@ function botMove(xORo, fiveClicks) {
                 if (tictactoe[1][j] === '' && tictactoe[2][j] === '' && tictactoe[3][j] === '') {
                     i = tictactoe.length;
                 } else {
-                    if (tictactoe[i][j] === tictactoe[i + 1][j] && tictactoe[i][j] !== '') {
+                    if (tictactoe[i][j] === tictactoe[i + 1][j]) { //&& tictactoe[i][j] !== ''){ova moze treba da e pred zagrada)staveno ama moze i bez
 
-                        trueORfalse = (tictactoe[i + 2][j] === '') ? tictactoe[i + 2][j] = 'o' : (tictactoe[i - 1][j] === '') ? tictactoe[i - 1][j] = 'o' : false;
+                        if (i === 2) {
+                            trueORfalse = (tictactoe[i - 1][j] === '') ? tictactoe[i - 1][j] = 'o' : false;
+                        } else {
+                            trueORfalse = (tictactoe[i + 2][j] === '') ? tictactoe[i + 2][j] = 'o' : false;
+                        }
+                        //trueORfalse = (tictactoe[i + 2][j] === '') ? tictactoe[i + 2][j] = 'o' : (tictactoe[i - 1][j] === '') ? tictactoe[i - 1][j] = 'o' : false;
                         if (trueORfalse) {
                             changeInArray += 1;
                             i = tictactoe.length;
@@ -159,7 +164,8 @@ function botMove(xORo, fiveClicks) {
     }
     if (changeInArray === 1) {
         return changeInArray;
-    } else if (fiveClicks > 1) { //ovoj kod dole proveruva dali ima negde moznost za pobeda na x vo kosite strani
+    } else if (fiveClicks > 1) {
+        //ovoj kod dole proveruva dali ima negde moznost za pobeda na x vo kosite strani
         if (tictactoe[1][1] === '' && tictactoe[2][2] === '' && tictactoe[3][3] === '') {
             trueORfalse += 1;
         } else {
@@ -355,21 +361,3 @@ $(document).ready(function () {
     });
 
 });
-
-/*
-Прв клика корисникот и он е Х
-Клика го внесуваме во низата на кликнатата позиција
-На ред е потег кој треба да го направи компјутерот и он е секогаш 0
-Е сега компјутерот треба да види во низата кај  има има ставено х и компјутерот само мести 0 каде што има празно место дури може и на првото празно место што ќе го најде и тоа место треба да стане НЕкликабилно и да му се стави 0 фотографија
-После вториот клик на јузерот копјутерот треба да провери дали јузерот има направено комбинација добитна од неговите вкупно два клика значи треба да се пробаат сите можни сценарија за добитна двојка(т.е дали со неговиот трет клик ќе не победи)
-
-
-
-
-1 ЈУЗЕР
-2 КОМПЈУТЕР
-3 ЈУЗЕР
-4 КОМПЈУТЕР
-5 ЈУЗЕР
-6 КОМПЈУТЕР
-*/

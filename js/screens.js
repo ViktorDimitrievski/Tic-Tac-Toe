@@ -41,17 +41,28 @@ $(function () {
 
 
 
-/*function checkInput(name, areaID) {
-    if (name.length <= 3) {
-        $("<span></span>")
-            .text("You can't leave this empty.")
-            .addClass("errormsg")
-            .insertAfter("#" + areaID);
-        return 0;
+function checkInput(name, areaID) {
+
+    if (name.length >= 3) {
+        if ($("#errormsg_" + areaID).length >= 1) {
+            $("#errormsg_" + areaID).remove();
+            return 1;
+        } else {
+            return 1;
+        }
     } else {
-        return 1;
+        if ($("#errormsg_" + areaID).length >= 1) {
+            return 0;
+        } else {
+            $("<span></span>")
+                .text("You can't leave this empty.")
+                .addClass("errormsg")
+                .attr("id", "errormsg_" + areaID)
+                .insertAfter("#" + areaID);
+            return 0;
+        }
     }
-}*/
+}
 $("#playSingle").click(function () {
     var playerName, areaID, isValid;
 
@@ -77,6 +88,7 @@ $("#playMulti").click(function () {
 
     areaID = $("#secondPlayer").attr("id");
     isValid += checkInput(secondPlayer, areaID);
+    
     if (isValid === 2) {
         $(".errormsg").remove();
         $("#firstInputName").text(firstPlayer);
