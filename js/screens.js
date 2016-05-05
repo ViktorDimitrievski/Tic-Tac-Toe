@@ -71,10 +71,14 @@ $("#playSingle").click(function () {
     isValid = checkInput(playerName, areaID);
 
     if (isValid) {
-        $(".errormsg").remove();
+        //$(".errormsg").remove();
         $("#firstInputName").text(playerName);
         $("#secondInputName").text("Viktor");
         $(".overAll").fadeOut(1000);
+        setTimeout(function () {
+            $("#main").fadeIn();
+            $(".footer").fadeIn();
+        }, 1500);
     }
 });
 
@@ -88,12 +92,18 @@ $("#playMulti").click(function () {
 
     areaID = $("#secondPlayer").attr("id");
     isValid += checkInput(secondPlayer, areaID);
-    
+
     if (isValid === 2) {
-        $(".errormsg").remove();
+        //$(".errormsg").remove();
         $("#firstInputName").text(firstPlayer);
         $("#secondInputName").text(secondPlayer);
         $(".overAll").fadeOut(1000);
+
+
+        setTimeout(function () {
+            $("#main").fadeIn();
+            $(".footer").fadeIn();
+        }, 1500);
     }
 });
 
