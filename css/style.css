@@ -77,7 +77,6 @@ textarea.style-textarea:focus:not([readonly]) {
   .btn:focus, .btn-success:focus, .btn-sigup:focus, .btn-login:focus, .btn-multi:focus, .btn-single:focus, .btn-play:focus {
     outline: 0; }
   .btn:active, .btn-success:active, .btn-sigup:active, .btn-login:active, .btn-multi:active, .btn-single:active, .btn-play:active {
-    background-color: #42A5F5;
     outline: 0; }
 
 .btn-success {

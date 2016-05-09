@@ -99,7 +99,7 @@ textarea.style-textarea:focus:not([readonly]) {
         outline: 0; //this is for google chrome if is not like this it will show outline after you click and is blue
     }
     &:active {
-        background-color: #42A5F5;
+//        background-color: #42A5F5;
         outline: 0;
     }
 }

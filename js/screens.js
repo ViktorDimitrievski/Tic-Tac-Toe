@@ -63,6 +63,14 @@ function checkInput(name, areaID) {
         }
     }
 }
+
+$("input[type='text']").focusout(function () {
+    var name, areaID;
+    name = $(this).val();
+    areaID = $(this).attr("id");
+    checkInput(name, areaID);
+});
+
 $("#playSingle").click(function () {
     var playerName, areaID, isValid;
 
@@ -71,7 +79,6 @@ $("#playSingle").click(function () {
     isValid = checkInput(playerName, areaID);
 
     if (isValid) {
-        //$(".errormsg").remove();
         $("#firstInputName").text(playerName);
         $("#secondInputName").text("Viktor");
         $(".overAll").fadeOut(1000);
